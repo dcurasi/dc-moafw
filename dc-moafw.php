@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Minimum Order Amount for Woocommerce
  * Plugin URI:        https://github.com/dcurasi/dc-moafw
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Minimum Order Amount for Woocommerce allows you to set easily and fast a minimum amount for the woocommerce orders.
  * Version:           1.0.0
  * Author:            Dario Curasì
  * Author URI:        https://github.com/dcurasi
