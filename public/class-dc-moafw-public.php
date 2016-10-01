@@ -100,4 +100,39 @@ class Dc_Moafw_Public {
 
 	}
 
+	// Set a minimum dollar amount per order
+	public function dc_moafw_set_minimum_order() {
+	    // Only run in the Cart or Checkout pages
+	    if( is_cart() || is_checkout() ) {
+	        global $woocommerce;
+	 
+	        // Set minimum cart total
+	        $minimum_cart_total = get_option('dc_moafw_minimum');
+	        $message = str_replace('[minimum]', '%s %s', get_option('dc_moafw_message'));
+	        $current_cart_text = str_replace('[current]', '%s %s', get_option('dc_moafw_current_total_text'));
+	        
+	        // Total we are going to be using for the Math
+	        // This is before taxes and shipping charges
+	        $total = round(WC()->cart->subtotal, 2);
+	                                
+	        // Compare values and add an error is Cart's total
+	        // happens to be less than the minimum required before checking out.
+	        // Will display a message along the lines of
+	        // A Minimum of 10 USD is required before checking out. (Cont. below)
+	        // Current cart total: 6 USD 
+	        if( $total < $minimum_cart_total  ) {
+	            // Display our error message
+
+	            wc_add_notice( sprintf( '<strong>'.$message.'</strong>'
+	                .'<br />'.$current_cart_text,
+	                $minimum_cart_total,
+	                get_option( 'woocommerce_currency'),
+	                $total,
+	                get_option( 'woocommerce_currency') ),
+	            'error' );
+	            
+	        }
+	    }
+	}
+
 }

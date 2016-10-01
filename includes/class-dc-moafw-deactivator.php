@@ -30,7 +30,10 @@ class Dc_Moafw_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
+		delete_option('dc_moafw_activate');
+	    delete_option('dc_moafw_minimum');
+	    delete_option('dc_moafw_message');
+	    delete_option('dc_moafw_current_total_text');
 	}
 
 }

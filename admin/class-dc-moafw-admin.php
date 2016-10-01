@@ -100,4 +100,39 @@ class Dc_Moafw_Admin {
 
 	}
 
+	//inizializzazione menu di amministrazione
+	function add_menu_page()
+	{
+	    add_submenu_page('woocommerce','Minimum Order', 'Minimum Order', 'manage_options', 'dc-moafw-menu-page', array( $this,'create_admin_interface' ));
+	}
+
+	/**
+	 * Callback function for the admin settings page.
+	 *
+	 * @since    1.0.0
+	 */
+	public function create_admin_interface(){
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/dc-moafw-admin-display.php';
+
+	}
+
+	/**
+	 * Creates our settings sections with fields etc.
+	 *
+	 * @since    1.0.0
+	 */
+	public function settings_api_init(){
+		register_setting('dc_moafw_options_group', 'dc_moafw_activate');
+	    register_setting('dc_moafw_options_group', 'dc_moafw_minimum');
+	    register_setting('dc_moafw_options_group', 'dc_moafw_message');
+	    register_setting('dc_moafw_options_group', 'dc_moafw_current_total_text');
+	}
+
+	public function error_notice() {
+		echo '<div class="notice notice-error is-dismissible">
+        		<p>Minimum Order Amount for Woocommerce is active but does not work. You need to install WooCommerce because the plugin is working properly.</p>
+    		  </div>';
+	}
+
 }

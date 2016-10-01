@@ -30,7 +30,10 @@ class Dc_Moafw_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
+		add_option('dc_moafw_activate', 1);
+		add_option('dc_moafw_minimum', 50);
+		add_option('dc_moafw_message', 'A Minimum of [minimum] is required before checking out.');
+		add_option('dc_moafw_current_total_text', 'Current cart\'s total: [current]');
 	}
 
 }
