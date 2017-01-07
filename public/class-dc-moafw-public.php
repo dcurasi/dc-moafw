@@ -100,7 +100,11 @@ class Dc_Moafw_Public {
 
 	}
 
-	// Set a minimum dollar amount per order
+	/**
+	 * Set a minimum dollar amount per order
+	 *
+	 * @since    1.1.0
+	 */
 	public function dc_moafw_set_minimum_order() {
 	    // Only run in the Cart or Checkout pages
 	    if( is_cart() || is_checkout() ) {
@@ -108,8 +112,14 @@ class Dc_Moafw_Public {
 	 
 	        // Set minimum cart total
 	        $minimum_cart_total = get_option('dc_moafw_minimum');
-	        $message = str_replace('[minimum]', '%s %s', get_option('dc_moafw_message'));
-	        $current_cart_text = str_replace('[current]', '%s %s', get_option('dc_moafw_current_total_text'));
+	        if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
+	        	$message = str_replace('[minimum]', '%s %s', pll__(get_option('dc_moafw_message')));
+	        	$current_cart_text = str_replace('[current]', '%s %s', pll__(get_option('dc_moafw_current_total_text')));
+	        }
+	        else {
+	        	$message = str_replace('[minimum]', '%s %s', get_option('dc_moafw_message'));
+	        	$current_cart_text = str_replace('[current]', '%s %s', get_option('dc_moafw_current_total_text'));
+	        }
 	        
 	        // Total we are going to be using for the Math
 	        // This is before taxes and shipping charges

@@ -64,12 +64,12 @@ class Dc_Moafw {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.1.0
 	 */
 	public function __construct() {
 
 		$this->plugin_name = 'dc-moafw';
-		$this->version = '1.0.0';
+		$this->version = '1.1.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -144,7 +144,7 @@ class Dc_Moafw {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.1.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -157,6 +157,9 @@ class Dc_Moafw {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'settings_api_init' );
 		if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 			$this->loader->add_action( 'admin_notices', $plugin_admin, 'error_notice' );
+		}
+		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+			$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'dc_moafw_register_string_polylang' );
 		}
 
 	}

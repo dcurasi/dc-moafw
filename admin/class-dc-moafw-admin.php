@@ -129,10 +129,28 @@ class Dc_Moafw_Admin {
 	    register_setting('dc_moafw_options_group', 'dc_moafw_current_total_text');
 	}
 
+
+	/**
+	 * error_notice
+	 *
+	 * @since    1.1.0
+	 */
 	public function error_notice() {
 		echo '<div class="notice notice-error is-dismissible">
-        		<p>Minimum Order Amount for Woocommerce is active but does not work. You need to install WooCommerce because the plugin is working properly.</p>
+        		<p>'.__('Minimum Order Amount for Woocommerce is active but does not work. You need to install WooCommerce because the plugin is working properly.', 'dc-moafw').'</p>
     		  </div>';
+	}
+
+	/**
+	 * register string in polylang
+	 *
+	 * @since    1.1.0
+	 */
+	public function dc_moafw_register_string_polylang() {
+		if (function_exists('pll_register_string')) {
+			pll_register_string('dc-moafw', get_option('dc_moafw_message'));
+			pll_register_string('dc-moafw', get_option('dc_moafw_current_total_text'));
+		}
 	}
 
 }
