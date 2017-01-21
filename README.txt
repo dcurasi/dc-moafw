@@ -21,6 +21,7 @@ Minimum Order Amount for Woocommerce allows you to set easily and fast a minimum
 
 * English
 * Italiano
+* Polish
 
 
 == Installation ==
@@ -45,6 +46,9 @@ This is the GitHub Repository [dc-moafw](https://github.com/dcurasi/dc-moafw).
 
 
 == Changelog ==
+
+= 1.1.1 - 21/01/17 =
+* New - Added Polish translation, thanks to Jerzy Afanasjew
 
 = 1.1.0 - 07/01/17 =
 * New - Added compatibility with Polylang
