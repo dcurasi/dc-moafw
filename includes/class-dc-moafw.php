@@ -64,12 +64,12 @@ class Dc_Moafw {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.1.1
+	 * @since    1.2.0
 	 */
 	public function __construct() {
 
 		$this->plugin_name = 'dc-moafw';
-		$this->version = '1.1.1';
+		$this->version = '1.2.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -144,15 +144,15 @@ class Dc_Moafw {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.1.0
+	 * @since    1.2.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Dc_Moafw_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		//$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		//$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu_page' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'settings_api_init' );
 		if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -168,7 +168,7 @@ class Dc_Moafw {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.2.0
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -177,9 +177,12 @@ class Dc_Moafw {
 
 		if( get_option( 'dc_moafw_activate' ) ) {
 			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-				$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-				$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+				//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+				//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 				$this->loader->add_action( 'woocommerce_check_cart_items', $plugin_public, 'dc_moafw_set_minimum_order' );
+				if( get_option( 'dc_moafw_message_shop' ) ) {
+					$this->loader->add_filter( 'woocommerce_before_main_content', $plugin_public, 'dc_moafw_set_minimum_order' );
+				}
 			}
 		}
 	}

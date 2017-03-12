@@ -62,7 +62,18 @@
                 <td>
                   <label for="dc_moafw_current_total_text">
                       <input type="text" id="dc_moafw_current_total_text" value="<?php echo get_option('dc_moafw_current_total_text'); ?>" name="dc_moafw_current_total_text" class="regular-text">
-                    <p class="description"><?php _e( 'The text of the current cart total. Insert [current] in the position where you want to show the current cart total.', 'dc-moafw' ); ?></p>
+                      <p class="description"><?php _e( 'The text of the current cart total. Insert [current] in the position where you want to show the current cart total.', 'dc-moafw' ); ?></p>
+                  </label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <th scope="row">
+                    <label for="dc_moafw_message_shop"><?php _e( 'Show message in the shop', 'dc-moafw' ); ?></label>
+                </th>
+                <td>
+                  <label for="dc_moafw_message_shop">
+                      <input type="checkbox" id="dc_moafw_message_shop" value="1" <?php checked(get_option('dc_moafw_message_shop'), 1); ?> name="dc_moafw_message_shop"> <?php _e( 'Enable', 'dc-moafw' ); ?>
+                      <p class="description"><?php _e( 'Enable this option to show the notification message also in the shop pages. (Note: the message will not be displayed if the cart is empty)', 'dc-moafw' ); ?></p>
                   </label>
                 </td>
             </tr>

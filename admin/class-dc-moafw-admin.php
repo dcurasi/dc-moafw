@@ -120,13 +120,14 @@ class Dc_Moafw_Admin {
 	/**
 	 * Creates our settings sections with fields etc.
 	 *
-	 * @since    1.0.0
+	 * @since    1.2.0
 	 */
 	public function settings_api_init(){
 		register_setting('dc_moafw_options_group', 'dc_moafw_activate');
 	    register_setting('dc_moafw_options_group', 'dc_moafw_minimum');
 	    register_setting('dc_moafw_options_group', 'dc_moafw_message');
 	    register_setting('dc_moafw_options_group', 'dc_moafw_current_total_text');
+	    register_setting('dc_moafw_options_group', 'dc_moafw_message_shop');
 	}
 
 
@@ -144,12 +145,12 @@ class Dc_Moafw_Admin {
 	/**
 	 * register string in polylang
 	 *
-	 * @since    1.1.0
+	 * @since    1.2.0
 	 */
 	public function dc_moafw_register_string_polylang() {
 		if (function_exists('pll_register_string')) {
-			pll_register_string('dc-moafw', get_option('dc_moafw_message'));
-			pll_register_string('dc-moafw', get_option('dc_moafw_current_total_text'));
+			pll_register_string('message', get_option('dc_moafw_message'), 'dc-moafw');
+			pll_register_string('current_total_text', get_option('dc_moafw_current_total_text'), 'dc-moafw');
 		}
 	}
 

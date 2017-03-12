@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Contributors: dcurasi
 Tags: woocommerce, order, woocommerce order, minimum order, woocommerce minimum order, shop, cart, woocommerce cart, product, products, minimum order amount, amount, minimum amount
 Requires at least: 3.0.1
-Tested up to: 4.7
-Stable tag: 4.6.1
+Tested up to: 4.7.3
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -14,7 +14,7 @@ Minimum Order Amount for Woocommerce allows you to set easily and fast a minimum
 
 == Description ==
 
-Minimum Order Amount for Woocommerce allows you to set easily and fast a minimum amount for the woocommerce orders. Moreover, it is possible to set the notification message in the case in which the minimum amount is not reached. It is based on the [WordPress Plugin Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate) and it is compatible with Woocommerce 2.1+ and Polylang.
+Minimum Order Amount for Woocommerce allows you to set easily and fast a minimum amount for the woocommerce orders. Moreover, it is possible to set the notification message in the case in which the minimum amount is not reached. It is based on the [WordPress Plugin Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate) and it is compatible with Woocommerce 2.1+, Polylang and WooCommerce Price Based on Country.
 
 
 = Available Languages =
@@ -22,6 +22,10 @@ Minimum Order Amount for Woocommerce allows you to set easily and fast a minimum
 * English
 * Italiano
 * Polish
+
+
+= If you like the plugin, please give it a rating. =
+If you have a feature request, let me know, they're always welcome!
 
 
 == Installation ==
@@ -46,6 +50,13 @@ This is the GitHub Repository [dc-moafw](https://github.com/dcurasi/dc-moafw).
 
 
 == Changelog ==
+
+= 1.2.0 - 12/03/17 =
+* New - Added compatibility with WooCommerce Price Based on Country
+* New - Added option for display notice message in the shop pages
+* Dev - Removed the inclusion of css and js files not needed
+* Fix - Fix the name and the group of strings registered in Polylang
+* Dev - Update translations
 
 = 1.1.1 - 21/01/17 =
 * New - Added Polish translation, thanks to Jerzy Afanasjew

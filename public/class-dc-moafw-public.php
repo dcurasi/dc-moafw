@@ -103,46 +103,90 @@ class Dc_Moafw_Public {
 	/**
 	 * Set a minimum dollar amount per order
 	 *
-	 * @since    1.1.0
+	 * @since    1.2.0
 	 */
 	public function dc_moafw_set_minimum_order() {
-	    // Only run in the Cart or Checkout pages
-	    if( is_cart() || is_checkout() ) {
-	        global $woocommerce;
-	 
-	        // Set minimum cart total
-	        $minimum_cart_total = get_option('dc_moafw_minimum');
-	        if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
-	        	$message = str_replace('[minimum]', '%s %s', pll__(get_option('dc_moafw_message')));
-	        	$current_cart_text = str_replace('[current]', '%s %s', pll__(get_option('dc_moafw_current_total_text')));
-	        }
-	        else {
-	        	$message = str_replace('[minimum]', '%s %s', get_option('dc_moafw_message'));
-	        	$current_cart_text = str_replace('[current]', '%s %s', get_option('dc_moafw_current_total_text'));
-	        }
-	        
-	        // Total we are going to be using for the Math
-	        // This is before taxes and shipping charges
-	        $total = round(WC()->cart->subtotal, 2);
-	                                
-	        // Compare values and add an error is Cart's total
-	        // happens to be less than the minimum required before checking out.
-	        // Will display a message along the lines of
-	        // A Minimum of 10 USD is required before checking out. (Cont. below)
-	        // Current cart total: 6 USD 
-	        if( $total < $minimum_cart_total  ) {
-	            // Display our error message
+        global $woocommerce;
+ 		$flag = false;
 
-	            wc_add_notice( sprintf( '<strong>'.$message.'</strong>'
-	                .'<br />'.$current_cart_text,
-	                $minimum_cart_total,
-	                get_option( 'woocommerce_currency'),
-	                $total,
-	                get_option( 'woocommerce_currency') ),
-	            'error' );
-	            
+        if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
+        	$message = str_replace('[minimum]', '%s %s', pll__(get_option('dc_moafw_message')));
+        	$current_cart_text = str_replace('[current]', '%s %s', pll__(get_option('dc_moafw_current_total_text')));
+        }
+        else {
+        	$message = str_replace('[minimum]', '%s %s', get_option('dc_moafw_message'));
+        	$current_cart_text = str_replace('[current]', '%s %s', get_option('dc_moafw_current_total_text'));
+        }
+
+        if ( in_array( 'woocommerce-product-price-based-on-countries/woocommerce-product-price-based-on-countries.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	        $wcpbc_values = new WCPBC_Customer();
+	        if ( $wcpbc_values->zone_id ) {
+	        	$flag = true;
 	        }
 	    }
+
+        // Total we are going to be using for the Math
+        // This is before taxes and shipping charges
+        $total = round(WC()->cart->subtotal, 2);
+
+        if( is_cart() || is_checkout() ) {
+		    if($flag) {
+		        // Set minimum cart total
+		        $minimum_cart_total = get_option('dc_moafw_minimum') * $wcpbc_values->exchange_rate;
+
+		        if( $total < $minimum_cart_total  ) {
+		            // Display our error message
+		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>'
+		                .'<br />'.$current_cart_text,
+		                $minimum_cart_total,
+		                $wcpbc_values->currency,
+		                $total,
+		                $wcpbc_values->currency ),
+		            'error' );
+		        }
+		    }
+		    else {
+		    	// Set minimum cart total
+		        $minimum_cart_total = get_option('dc_moafw_minimum');
+
+		        if( $total < $minimum_cart_total  ) {
+		            // Display our error message
+		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>'
+		                .'<br />'.$current_cart_text,
+		                $minimum_cart_total,
+		                get_option( 'woocommerce_currency'),
+		                $total,
+		                get_option( 'woocommerce_currency') ),
+		            'error' );
+		        }
+		    }
+		}
+		elseif(get_option( 'dc_moafw_message_shop' ) && $total) {
+			if($flag) {
+		        // Set minimum cart total
+		        $minimum_cart_total = get_option('dc_moafw_minimum') * $wcpbc_values->exchange_rate;
+
+		        if( $total < $minimum_cart_total  ) {
+		            // Display our error message
+		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>',
+		                $minimum_cart_total,
+		                $wcpbc_values->currency),
+		            'error' );
+		        }
+		    }
+		    else {
+		    	// Set minimum cart total
+		        $minimum_cart_total = get_option('dc_moafw_minimum');
+
+		        if( $total < $minimum_cart_total  ) {
+		            // Display our error message
+		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>',
+		                $minimum_cart_total,
+		                get_option( 'woocommerce_currency') ),
+		            'error' );
+		        }
+		    }
+		}
 	}
 
 }
