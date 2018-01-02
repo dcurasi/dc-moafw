@@ -120,13 +120,14 @@ class Dc_Moafw_Admin {
 	/**
 	 * Creates our settings sections with fields etc.
 	 *
-	 * @since    1.2.0
+	 * @since    1.3.0
 	 */
 	public function settings_api_init(){
 		register_setting('dc_moafw_options_group', 'dc_moafw_activate');
 	    register_setting('dc_moafw_options_group', 'dc_moafw_minimum');
 	    register_setting('dc_moafw_options_group', 'dc_moafw_message');
 	    register_setting('dc_moafw_options_group', 'dc_moafw_current_total_text');
+	    register_setting('dc_moafw_options_group', 'dc_moafw_currency_display_type');
 	    register_setting('dc_moafw_options_group', 'dc_moafw_message_shop');
 	}
 

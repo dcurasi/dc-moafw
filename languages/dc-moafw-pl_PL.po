@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Minimum Order Amount for Woocommerce\n"
-"POT-Creation-Date: 2017-03-12 15:25+0100\n"
-"PO-Revision-Date: 2017-03-12 15:26+0100\n"
+"POT-Creation-Date: 2018-01-02 13:22+0100\n"
+"PO-Revision-Date: 2018-01-02 13:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: Dario Curasì <curasi.d87@gmail.com>\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/class-dc-moafw-admin.php:141
+#: admin/class-dc-moafw-admin.php:142
 msgid ""
 "Minimum Order Amount for Woocommerce is active but does not work. You need "
 "to install WooCommerce because the plugin is working properly."
@@ -76,14 +76,34 @@ msgstr ""
 "pokazać obecną sumę koszyka."
 
 #: admin/partials/dc-moafw-admin-display.php:71
+msgid "Currency Display Type"
+msgstr "Typ wyświetlania waluty"
+
+#: admin/partials/dc-moafw-admin-display.php:75
+msgid "Symbol"
+msgstr "Symbol"
+
+#: admin/partials/dc-moafw-admin-display.php:76
+msgid "Text"
+msgstr "Tekst"
+
+#: admin/partials/dc-moafw-admin-display.php:78
+msgid ""
+"The way the currency appears in the notification message (i.e. \"&euro;\" if "
+"is \"symbol\", \"EUR\" if is \"text\")."
+msgstr ""
+"Sposób, w jaki waluta pojawia się w wiadomości powiadomienia (tj. \"&euro;\" "
+"jeśli jest \"symbol\", \"EUR\", jeśli jest \"tekst\")."
+
+#: admin/partials/dc-moafw-admin-display.php:83
 msgid "Show message in the shop"
 msgstr "Pokaż wiadomość w sklepie"
 
-#: admin/partials/dc-moafw-admin-display.php:75
+#: admin/partials/dc-moafw-admin-display.php:87
 msgid "Enable"
 msgstr "Włącz"
 
-#: admin/partials/dc-moafw-admin-display.php:76
+#: admin/partials/dc-moafw-admin-display.php:88
 msgid ""
 "Enable this option to show the notification message also in the shop pages. "
 "(Note: the message will not be displayed if the cart is empty)"

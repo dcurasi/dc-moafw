@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Contributors: dcurasi
 Tags: woocommerce, order, woocommerce order, minimum order, woocommerce minimum order, shop, cart, woocommerce cart, product, products, minimum order amount, amount, minimum amount
 Requires at least: 3.0.1
-Tested up to: 4.7.3
-Stable tag: 1.2.0
+Tested up to: 4.9.1
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -50,6 +50,13 @@ This is the GitHub Repository [dc-moafw](https://github.com/dcurasi/dc-moafw).
 
 
 == Changelog ==
+
+= 1.3.0 - 02/01/18 =
+* New - Added the ability to choose how to display the currency
+* Fix - Now the options are deleted when the plugin is uninstalled and not when the plugin is deactivate
+* Fix - The cart total and the minimum order were formatted with two decimal places
+* Dev - The function for set the minimum order has been restructured
+* Dev - Update translations
 
 = 1.2.0 - 12/03/17 =
 * New - Added compatibility with WooCommerce Price Based on Country

@@ -20,12 +20,18 @@
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
  * @link       https://github.com/dcurasi
- * @since      1.0.0
+ * @since      1.3.0
  *
  * @package    Dc_Moafw
  */
 
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	delete_option('dc_moafw_activate');
+    delete_option('dc_moafw_minimum');
+    delete_option('dc_moafw_message');
+    delete_option('dc_moafw_current_total_text');
+    delete_option('dc_moafw_currency_display_type');
+    delete_option('dc_moafw_message_shop');
 	exit;
 }

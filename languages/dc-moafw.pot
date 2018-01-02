@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Minimum Order Amount for Woocommerce\n"
-"POT-Creation-Date: 2017-03-11 13:30+0100\n"
+"POT-Creation-Date: 2018-01-02 13:18+0100\n"
 "PO-Revision-Date: 2017-01-07 19:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: Dario Curasì <curasi.d87@gmail.com>\n"
@@ -10,14 +10,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/class-dc-moafw-admin.php:141
+#: admin/class-dc-moafw-admin.php:142
 msgid ""
 "Minimum Order Amount for Woocommerce is active but does not work. You need "
 "to install WooCommerce because the plugin is working properly."
@@ -69,14 +69,32 @@ msgid ""
 msgstr ""
 
 #: admin/partials/dc-moafw-admin-display.php:71
-msgid "Show message in the shop"
+msgid "Currency Display Type"
 msgstr ""
 
 #: admin/partials/dc-moafw-admin-display.php:75
-msgid "Enable"
+msgid "Symbol"
 msgstr ""
 
 #: admin/partials/dc-moafw-admin-display.php:76
+msgid "Text"
+msgstr ""
+
+#: admin/partials/dc-moafw-admin-display.php:78
+msgid ""
+"The way the currency appears in the notification message (i.e. \"&euro;\" if "
+"is \"symbol\", \"EUR\" if is \"text\")."
+msgstr ""
+
+#: admin/partials/dc-moafw-admin-display.php:83
+msgid "Show message in the shop"
+msgstr ""
+
+#: admin/partials/dc-moafw-admin-display.php:87
+msgid "Enable"
+msgstr ""
+
+#: admin/partials/dc-moafw-admin-display.php:88
 msgid ""
 "Enable this option to show the notification message also in the shop pages. "
 "(Note: the message will not be displayed if the cart is empty)"

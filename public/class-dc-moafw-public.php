@@ -103,34 +103,22 @@ class Dc_Moafw_Public {
 	/**
 	 * Set a minimum dollar amount per order
 	 *
-	 * @since    1.2.0
+	 * @since    1.3.0
 	 */
 	public function dc_moafw_set_minimum_order() {
         global $woocommerce;
- 		$flag = false;
+        $wcpbc_values = new WCPBC_Customer();
+ 		$wcpbc_currency_active = $this->dc_moafw_wcpbc_currency_is_active($wcpbc_values);
 
-        if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
-        	$message = str_replace('[minimum]', '%s %s', pll__(get_option('dc_moafw_message')));
-        	$current_cart_text = str_replace('[current]', '%s %s', pll__(get_option('dc_moafw_current_total_text')));
-        }
-        else {
-        	$message = str_replace('[minimum]', '%s %s', get_option('dc_moafw_message'));
-        	$current_cart_text = str_replace('[current]', '%s %s', get_option('dc_moafw_current_total_text'));
-        }
-
-        if ( in_array( 'woocommerce-product-price-based-on-countries/woocommerce-product-price-based-on-countries.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-	        $wcpbc_values = new WCPBC_Customer();
-	        if ( $wcpbc_values->zone_id ) {
-	        	$flag = true;
-	        }
-	    }
+    	$message = $this->dc_moafw_get_message();
+    	$current_cart_text = $this->dc_moafw_get_current_cart_text();
 
         // Total we are going to be using for the Math
         // This is before taxes and shipping charges
         $total = round(WC()->cart->subtotal, 2);
-
+        //print_r(WC()->cart->subtotal_ex_tax);
         if( is_cart() || is_checkout() ) {
-		    if($flag) {
+		    if($wcpbc_currency_active) {
 		        // Set minimum cart total
 		        $minimum_cart_total = get_option('dc_moafw_minimum') * $wcpbc_values->exchange_rate;
 
@@ -138,10 +126,10 @@ class Dc_Moafw_Public {
 		            // Display our error message
 		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>'
 		                .'<br />'.$current_cart_text,
-		                $minimum_cart_total,
-		                $wcpbc_values->currency,
-		                $total,
-		                $wcpbc_values->currency ),
+		                number_format($minimum_cart_total, 2, ',', '.'),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values),
+		                number_format($total, 2, ',', '.'),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values) ),
 		            'error' );
 		        }
 		    }
@@ -153,24 +141,24 @@ class Dc_Moafw_Public {
 		            // Display our error message
 		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>'
 		                .'<br />'.$current_cart_text,
-		                $minimum_cart_total,
-		                get_option( 'woocommerce_currency'),
-		                $total,
-		                get_option( 'woocommerce_currency') ),
+		                number_format($minimum_cart_total, 2, ',', '.'),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values),
+		                number_format($total, 2, ',', '.'),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values) ),
 		            'error' );
 		        }
 		    }
 		}
 		elseif(get_option( 'dc_moafw_message_shop' ) && $total) {
-			if($flag) {
+			if($wcpbc_currency_active) {
 		        // Set minimum cart total
 		        $minimum_cart_total = get_option('dc_moafw_minimum') * $wcpbc_values->exchange_rate;
 
 		        if( $total < $minimum_cart_total  ) {
 		            // Display our error message
 		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>',
-		                $minimum_cart_total,
-		                $wcpbc_values->currency),
+		                number_format($minimum_cart_total, 2, ',', '.'),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values)),
 		            'error' );
 		        }
 		    }
@@ -181,12 +169,72 @@ class Dc_Moafw_Public {
 		        if( $total < $minimum_cart_total  ) {
 		            // Display our error message
 		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>',
-		                $minimum_cart_total,
-		                get_option( 'woocommerce_currency') ),
+		                number_format($minimum_cart_total, 2, ',', '.'),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values) ),
 		            'error' );
 		        }
 		    }
 		}
+	}
+
+	/**
+	 * Check if woocommerce-product-price-based-on-countries is active and have a currency
+	 *
+	 * @since    1.3.0
+	 */
+	public function dc_moafw_wcpbc_currency_is_active($wcpbc_values) {
+		if ( in_array( 'woocommerce-product-price-based-on-countries/woocommerce-product-price-based-on-countries.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	        if ( $wcpbc_values->zone_id ) {
+	        	return true;
+	        }
+
+	        return false;
+	    }
+
+	    return false;
+	}
+
+	/**
+	 * Get a currency display type
+	 *
+	 * @since    1.3.0
+	 */
+	public function dc_moafw_get_currency_display_type($wcpbc_values) {
+		if(get_option('dc_moafw_currency_display_type') != "symbol") {
+			if($this->dc_moafw_wcpbc_currency_is_active($wcpbc_values)) {
+				return $wcpbc_values->currency;
+			}
+
+			return get_option( 'woocommerce_currency');
+		}
+
+		return get_woocommerce_currency_symbol();
+	}
+
+	/**
+	 * Get a message
+	 *
+	 * @since    1.3.0
+	 */
+	public function dc_moafw_get_message() {
+		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
+        	return str_replace('[minimum]', '%s %s', pll__(get_option('dc_moafw_message')));
+
+        }
+
+        return str_replace('[minimum]', '%s %s', get_option('dc_moafw_message'));
+	}
+
+	/**
+	 * Get a current cart text
+	 *
+	 * @since    1.3.0
+	 */
+	public function dc_moafw_get_current_cart_text() {
+		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
+        	return str_replace('[current]', '%s %s', pll__(get_option('dc_moafw_current_total_text')));
+        }
+        	return str_replace('[current]', '%s %s', get_option('dc_moafw_current_total_text'));
 	}
 
 }

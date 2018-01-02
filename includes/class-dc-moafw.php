@@ -69,7 +69,7 @@ class Dc_Moafw {
 	public function __construct() {
 
 		$this->plugin_name = 'dc-moafw';
-		$this->version = '1.2.0';
+		$this->version = '1.3.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -144,14 +144,14 @@ class Dc_Moafw {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.2.0
+	 * @since    1.3.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Dc_Moafw_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		//$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		//$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu_page' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'settings_api_init' );

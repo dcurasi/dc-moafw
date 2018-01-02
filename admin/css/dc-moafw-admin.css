@@ -2,3 +2,7 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+ #dc_moafw_currency_display_type {
+ 	padding-top: 0;
+    padding-bottom: 0;
+ }

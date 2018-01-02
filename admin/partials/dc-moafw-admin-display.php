@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://github.com/dcurasi
- * @since      1.1.0
+ * @since      1.3.0
  *
  * @package    Dc_Moafw
  * @subpackage Dc_Moafw/admin/partials
@@ -64,6 +64,18 @@
                       <input type="text" id="dc_moafw_current_total_text" value="<?php echo get_option('dc_moafw_current_total_text'); ?>" name="dc_moafw_current_total_text" class="regular-text">
                       <p class="description"><?php _e( 'The text of the current cart total. Insert [current] in the position where you want to show the current cart total.', 'dc-moafw' ); ?></p>
                   </label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <th scope="row">
+                    <label for="dc_moafw_currency_display_type"><?php _e( 'Currency Display Type', 'dc-moafw' ); ?></label>
+                </th>
+                <td>
+                  <select id="dc_moafw_currency_display_type" name="dc_moafw_currency_display_type">
+                      <option value="symbol" <?php echo selected(get_option('dc_moafw_currency_display_type'), "symbol"); ?>><?php _e('Symbol', 'dc-moafw'); ?></option>
+                      <option value="text" <?php echo selected(get_option('dc_moafw_currency_display_type'), "text"); ?>><?php _e('Text', 'dc-moafw'); ?></option>
+                  </select>
+                  <p class="description"><?php _e( 'The way the currency appears in the notification message (i.e. "&euro;" if is "symbol", "EUR" if is "text").', 'dc-moafw' ); ?></p>
                 </td>
             </tr>
             <tr valign="top">
