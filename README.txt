@@ -51,6 +51,9 @@ This is the GitHub Repository [dc-moafw](https://github.com/dcurasi/dc-moafw).
 
 == Changelog ==
 
+= 1.3.1 - 02/01/18 =
+* Fix - Fix the fatal error on the cart page (if WCPBC_Customer class does not exist)
+
 = 1.3.0 - 02/01/18 =
 * New - Added the ability to choose how to display the currency
 * Fix - Now the options are deleted when the plugin is uninstalled and not when the plugin is deactivate

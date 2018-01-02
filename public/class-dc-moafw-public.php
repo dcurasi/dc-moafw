@@ -103,11 +103,16 @@ class Dc_Moafw_Public {
 	/**
 	 * Set a minimum dollar amount per order
 	 *
-	 * @since    1.3.0
+	 * @since    1.3.1
 	 */
 	public function dc_moafw_set_minimum_order() {
         global $woocommerce;
-        $wcpbc_values = new WCPBC_Customer();
+        if ( in_array( 'woocommerce-product-price-based-on-countries/woocommerce-product-price-based-on-countries.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+        	$wcpbc_values = new WCPBC_Customer();
+        }
+        else {
+        	$wcpbc_values = null;
+        }
  		$wcpbc_currency_active = $this->dc_moafw_wcpbc_currency_is_active($wcpbc_values);
 
     	$message = $this->dc_moafw_get_message();
