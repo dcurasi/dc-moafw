@@ -5,7 +5,7 @@ Contributors: dcurasi
 Tags: woocommerce, order, woocommerce order, minimum order, woocommerce minimum order, shop, cart, woocommerce cart, product, products, minimum order amount, amount, minimum amount
 Requires at least: 3.0.1
 Tested up to: 4.9.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -51,7 +51,7 @@ This is the GitHub Repository [dc-moafw](https://github.com/dcurasi/dc-moafw).
 
 == Changelog ==
 
-= 1.3.1 - 02/01/18 =
+= 1.3.1 - 03/01/18 =
 * Fix - Fix the fatal error on the cart page (if WCPBC_Customer class does not exist)
 
 = 1.3.0 - 02/01/18 =
