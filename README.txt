@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Contributors: dcurasi
 Tags: woocommerce, order, woocommerce order, minimum order, woocommerce minimum order, shop, cart, woocommerce cart, product, products, minimum order amount, amount, minimum amount
 Requires at least: 3.0.1
-Tested up to: 4.9.1
-Stable tag: 1.3.1
+Tested up to: 4.9.4
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -50,6 +50,12 @@ This is the GitHub Repository [dc-moafw](https://github.com/dcurasi/dc-moafw).
 
 
 == Changelog ==
+
+= 1.4.0 - 04/03/18 =
+* Fix - Now if the cart is empty, the minimum order notification is not shown
+* New - Now the decimal and thousands separators are displayed as woocommerce settings
+* New - Now the number of decimals in the price is the same as the woocommerce settings
+* New - Now the currency position in the price is set as in the woocommerce settings
 
 = 1.3.1 - 03/01/18 =
 * Fix - Fix the fatal error on the cart page (if WCPBC_Customer class does not exist)

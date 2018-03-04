@@ -117,12 +117,15 @@ class Dc_Moafw_Public {
 
     	$message = $this->dc_moafw_get_message();
     	$current_cart_text = $this->dc_moafw_get_current_cart_text();
+		$decimal_separator = wc_get_price_decimal_separator();
+		$thousand_separator = wc_get_price_thousand_separator();
+		$num_decimals = wc_get_price_decimals();
 
         // Total we are going to be using for the Math
         // This is before taxes and shipping charges
-        $total = round(WC()->cart->subtotal, 2);
+        $total = round(WC()->cart->subtotal, $num_decimals);
         //print_r(WC()->cart->subtotal_ex_tax);
-        if( is_cart() || is_checkout() ) {
+        if( (is_cart() || is_checkout()) && $total) {
 		    if($wcpbc_currency_active) {
 		        // Set minimum cart total
 		        $minimum_cart_total = get_option('dc_moafw_minimum') * $wcpbc_values->exchange_rate;
@@ -131,10 +134,10 @@ class Dc_Moafw_Public {
 		            // Display our error message
 		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>'
 		                .'<br />'.$current_cart_text,
-		                number_format($minimum_cart_total, 2, ',', '.'),
 		                $this->dc_moafw_get_currency_display_type($wcpbc_values),
-		                number_format($total, 2, ',', '.'),
-		                $this->dc_moafw_get_currency_display_type($wcpbc_values) ),
+		                number_format($minimum_cart_total, $num_decimals, $decimal_separator, $thousand_separator),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values),
+		                number_format($total, $num_decimals, $decimal_separator, $thousand_separator) ),
 		            'error' );
 		        }
 		    }
@@ -146,10 +149,10 @@ class Dc_Moafw_Public {
 		            // Display our error message
 		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>'
 		                .'<br />'.$current_cart_text,
-		                number_format($minimum_cart_total, 2, ',', '.'),
 		                $this->dc_moafw_get_currency_display_type($wcpbc_values),
-		                number_format($total, 2, ',', '.'),
-		                $this->dc_moafw_get_currency_display_type($wcpbc_values) ),
+		                number_format($minimum_cart_total, $num_decimals, $decimal_separator, $thousand_separator),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values),
+		                number_format($total, $num_decimals, $decimal_separator, $thousand_separator) ),
 		            'error' );
 		        }
 		    }
@@ -162,8 +165,8 @@ class Dc_Moafw_Public {
 		        if( $total < $minimum_cart_total  ) {
 		            // Display our error message
 		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>',
-		                number_format($minimum_cart_total, 2, ',', '.'),
-		                $this->dc_moafw_get_currency_display_type($wcpbc_values)),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values),
+		                number_format($minimum_cart_total, $num_decimals, $decimal_separator, $thousand_separator) ),
 		            'error' );
 		        }
 		    }
@@ -174,8 +177,8 @@ class Dc_Moafw_Public {
 		        if( $total < $minimum_cart_total  ) {
 		            // Display our error message
 		            wc_add_notice( sprintf( '<strong>'.$message.'</strong>',
-		                number_format($minimum_cart_total, 2, ',', '.'),
-		                $this->dc_moafw_get_currency_display_type($wcpbc_values) ),
+		                $this->dc_moafw_get_currency_display_type($wcpbc_values),
+		                number_format($minimum_cart_total, $num_decimals, $decimal_separator, $thousand_separator) ),
 		            'error' );
 		        }
 		    }
@@ -222,12 +225,13 @@ class Dc_Moafw_Public {
 	 * @since    1.3.0
 	 */
 	public function dc_moafw_get_message() {
+		$price_format = get_woocommerce_price_format();
 		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
-        	return str_replace('[minimum]', '%s %s', pll__(get_option('dc_moafw_message')));
+        	return str_replace('[minimum]', $price_format, pll__(get_option('dc_moafw_message')));
 
         }
 
-        return str_replace('[minimum]', '%s %s', get_option('dc_moafw_message'));
+        return str_replace('[minimum]', $price_format, get_option('dc_moafw_message'));
 	}
 
 	/**
@@ -236,10 +240,11 @@ class Dc_Moafw_Public {
 	 * @since    1.3.0
 	 */
 	public function dc_moafw_get_current_cart_text() {
+		$price_format = str_replace(array('1', '2'), array('3', '4'), get_woocommerce_price_format());
 		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
-        	return str_replace('[current]', '%s %s', pll__(get_option('dc_moafw_current_total_text')));
+        	return str_replace('[current]', $price_format, pll__(get_option('dc_moafw_current_total_text')));
         }
-        	return str_replace('[current]', '%s %s', get_option('dc_moafw_current_total_text'));
+        	return str_replace('[current]', $price_format, get_option('dc_moafw_current_total_text'));
 	}
 
 }
