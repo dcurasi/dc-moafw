@@ -53,7 +53,7 @@ This is the GitHub Repository [dc-moafw](https://github.com/dcurasi/dc-moafw).
 == Changelog ==
 
 = 1.5.0 - 02/11/18 =
-* New - Added compatibility with Polylang Pro, thanks to Steven Ray
+* New - Added compatibility with Polylang Pro, thanks to King Lui
 * New - Added French translation, thanks to Steven Ray
 * Fix - Fixex Polish translation, thanks to Steven Ray
 
