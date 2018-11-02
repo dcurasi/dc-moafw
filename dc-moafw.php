@@ -9,20 +9,22 @@
  * that starts the plugin.
  *
  * @link              https://github.com/dcurasi
- * @since             1.4.0
+ * @since             1.5.0
  * @package           Dc_Moafw
  *
  * @wordpress-plugin
  * Plugin Name:       Minimum Order Amount for Woocommerce
  * Plugin URI:        https://github.com/dcurasi/dc-moafw
  * Description:       Minimum Order Amount for Woocommerce allows you to set easily and fast a minimum amount for the woocommerce orders.
- * Version:           1.4.0
+ * Version:           1.5.0
  * Author:            Dario Curasì
  * Author URI:        https://github.com/dcurasi
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       dc-moafw
  * Domain Path:       /languages
+ * WC requires at least: 2.1.0
+ * WC tested up to: 3.5.1
  */
 
 // If this file is called directly, abort.

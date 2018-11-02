@@ -69,7 +69,7 @@ class Dc_Moafw {
 	public function __construct() {
 
 		$this->plugin_name = 'dc-moafw';
-		$this->version = '1.3.1';
+		$this->version = '1.5.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -158,7 +158,7 @@ class Dc_Moafw {
 		if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 			$this->loader->add_action( 'admin_notices', $plugin_admin, 'error_notice' );
 		}
-		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || in_array( 'polylang-pro/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 			$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'dc_moafw_register_string_polylang' );
 		}
 

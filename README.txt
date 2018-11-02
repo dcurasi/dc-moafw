@@ -3,8 +3,8 @@
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KZRGHFSGGRXU6
 Contributors: dcurasi
 Tags: woocommerce, order, woocommerce order, minimum order, woocommerce minimum order, shop, cart, woocommerce cart, product, products, minimum order amount, amount, minimum amount
-Requires at least: 3.0.1
-Tested up to: 4.9.4
+Requires at least: 3.2.0
+Tested up to: 4.9.8
 Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -22,6 +22,7 @@ Minimum Order Amount for Woocommerce allows you to set easily and fast a minimum
 * English
 * Italiano
 * Polish
+* French
 
 
 = If you like the plugin, please give it a rating. =
@@ -50,6 +51,11 @@ This is the GitHub Repository [dc-moafw](https://github.com/dcurasi/dc-moafw).
 
 
 == Changelog ==
+
+= 1.5.0 - 02/11/18 =
+* New - Added compatibility with Polylang Pro, thanks to Steven Ray
+* New - Added French translation, thanks to Steven Ray
+* Fix - Fixex Polish translation, thanks to Steven Ray
 
 = 1.4.0 - 04/03/18 =
 * Fix - Now if the cart is empty, the minimum order notification is not shown

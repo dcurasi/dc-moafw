@@ -1,20 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Minimum Order Amount for Woocommerce\n"
-"POT-Creation-Date: 2018-01-02 13:22+0100\n"
-"PO-Revision-Date: 2018-11-02 10:29+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2018-01-02 13:18+0100\n"
+"PO-Revision-Date: 2018-11-02 10:36+0100\n"
 "Language-Team: Dario Curasì <curasi.d87@gmail.com>\n"
-"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
+"Last-Translator: \n"
+"Language: fr_FR\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/class-dc-moafw-admin.php:142
@@ -22,36 +21,37 @@ msgid ""
 "Minimum Order Amount for Woocommerce is active but does not work. You need "
 "to install WooCommerce because the plugin is working properly."
 msgstr ""
-"Minimalna Kwota Zamówienia dla Woocommerce jest aktywna, ale nie działa. "
-"Musisz zainstalować WooCommerce ponieważ plugin dziala prawidlowo."
+"Le montant minimal de commandes pour Woocommerce est active mais ne "
+"fonctionne pas. Vous devez installer WooCommerce parce que le plugin "
+"fonctionne correctement."
 
 #: admin/partials/dc-moafw-admin-display.php:17
 msgid "Minimum Order Amount for Woocommerce"
-msgstr "Minimalna Kwota Zamówienia dla Woocommerce"
+msgstr "Le montant minimal de commandes pour Woocommerce"
 
 #: admin/partials/dc-moafw-admin-display.php:22
 msgid "Configuration"
-msgstr "Konfiguracja"
+msgstr "Paramètres"
 
 #: admin/partials/dc-moafw-admin-display.php:27
 msgid "Enable / Disable"
-msgstr "Włączanie / Wyłączanie"
+msgstr "Activer / Désactiver"
 
 #: admin/partials/dc-moafw-admin-display.php:31
 msgid "Activate Options"
-msgstr "Aktywacja Opcji"
+msgstr "Activez des Options"
 
 #: admin/partials/dc-moafw-admin-display.php:37
 msgid "Minimum Order"
-msgstr "Minimalne Zamówienie"
+msgstr "Commande minimal"
 
 #: admin/partials/dc-moafw-admin-display.php:42
 msgid "The minimum amount with which you can place your order."
-msgstr "Minimalna kwota, z którą możesz złożyć zamówienie."
+msgstr "Le montant minimum avec lequel vous pouvez placer votre commande."
 
 #: admin/partials/dc-moafw-admin-display.php:48
 msgid "Message"
-msgstr "Komunikat"
+msgstr "Notification"
 
 #: admin/partials/dc-moafw-admin-display.php:54
 msgid ""
@@ -59,62 +59,63 @@ msgid ""
 "[minimum] in the position where you want to show the minimum value in the "
 "message."
 msgstr ""
-"Ogłoszenie komunikat, który pojawi się, jeżeli minimalna kwota nie jest "
-"osiągnięta. Wstaw [minimum] w miejsce, gdzie chcesz wykazać minimalną "
-"wartość w polu Wiadomość."
+"La notification qui s'affiche si le montant minimal n'est pas atteint. "
+"Insérer [minimum] dans la position où vous voulez afficher la valeur "
+"minimale dans le message."
 
 #: admin/partials/dc-moafw-admin-display.php:60
 msgid "Current Total Text"
-msgstr "Aktualnie Całkowity Tekst"
+msgstr "Le texte du total actuel"
 
 #: admin/partials/dc-moafw-admin-display.php:65
 msgid ""
 "The text of the current cart total. Insert [current] in the position where "
 "you want to show the current cart total."
 msgstr ""
-"Tekst całosci aktualnego koszyka. Wstaw [obecny] w miejsce, w którym chcesz "
-"wyświetlić całość aktualnego koszyka."
+"Le texte du total actuel du panier. Insérer [actuel] dans la position où "
+"vous voulez afficher le total en cours du panier."
 
 #: admin/partials/dc-moafw-admin-display.php:71
 msgid "Currency Display Type"
-msgstr "Waluta Typ Wyświetlacza"
+msgstr "Type d'affichage de la monnaie"
 
 #: admin/partials/dc-moafw-admin-display.php:75
 msgid "Symbol"
-msgstr "Symbol"
+msgstr "Symbole"
 
 #: admin/partials/dc-moafw-admin-display.php:76
 msgid "Text"
-msgstr "Tekst"
+msgstr "Texte"
 
 #: admin/partials/dc-moafw-admin-display.php:78
 msgid ""
 "The way the currency appears in the notification message (i.e. \"&euro;\" if "
 "is \"symbol\", \"EUR\" if is \"text\")."
 msgstr ""
-"Sposób waluty powiadamiania pojawi się komunikat (tzn. \"&Euro;\" jeżeli "
-"jest to \"symbol\", \"EUR\". Jeżeli jest \"tekstem\")."
+"La façon dont la monnaie s'affiche dans le message de notification (c.-à-d. "
+"\"&Euro ;\" s'est \"symbole\", \"EUR\" s'est \"text\")."
 
 #: admin/partials/dc-moafw-admin-display.php:83
 msgid "Show message in the shop"
-msgstr "Pokaż wiadomość w sklepie"
+msgstr "Afficher le message dans la boutique"
 
 #: admin/partials/dc-moafw-admin-display.php:87
 msgid "Enable"
-msgstr "Włącz"
+msgstr "Activer"
 
 #: admin/partials/dc-moafw-admin-display.php:88
 msgid ""
 "Enable this option to show the notification message also in the shop pages. "
 "(Note: the message will not be displayed if the cart is empty)"
 msgstr ""
-"Włącz tę opcję, aby wyświetlić komunikat informacyjny także na stronach "
-"sklepu. (Uwaga: komunikat nie będzie wyświetlany, jeśli wózek jest pusty)"
+"Activez cette option pour afficher le message de notification aussi dans les "
+"pages de la boutique. (Note : ce message ne s'affiche pas si le panier est "
+"vide)"
 
 #: includes/class-dc-moafw-activator.php:35
 msgid "A Minimum of [minimum] is required before checking out."
-msgstr "Minimum [minimum] jest wymagana przed wymeldowaniem."
+msgstr "Un minimum de [minimum] est nécessaire avant de la validation."
 
 #: includes/class-dc-moafw-activator.php:36
 msgid "Current cart's total: [current]"
-msgstr "Bieżący Coszyk jest Tałkowita: [current]"
+msgstr "Total actuel du panier: [current]"

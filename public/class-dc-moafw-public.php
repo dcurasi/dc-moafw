@@ -222,11 +222,11 @@ class Dc_Moafw_Public {
 	/**
 	 * Get a message
 	 *
-	 * @since    1.3.0
+	 * @since    1.5.0
 	 */
 	public function dc_moafw_get_message() {
 		$price_format = get_woocommerce_price_format();
-		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
+		if ( ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || in_array( 'polylang-pro/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) && function_exists('pll__') ) {
         	return str_replace('[minimum]', $price_format, pll__(get_option('dc_moafw_message')));
 
         }
@@ -237,11 +237,11 @@ class Dc_Moafw_Public {
 	/**
 	 * Get a current cart text
 	 *
-	 * @since    1.3.0
+	 * @since    1.5.0
 	 */
 	public function dc_moafw_get_current_cart_text() {
 		$price_format = str_replace(array('1', '2'), array('3', '4'), get_woocommerce_price_format());
-		if ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && function_exists('pll__') ) {
+		if ( ( in_array( 'polylang/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || in_array( 'polylang-pro/polylang.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) && function_exists('pll__') ) {
         	return str_replace('[current]', $price_format, pll__(get_option('dc_moafw_current_total_text')));
         }
         	return str_replace('[current]', $price_format, get_option('dc_moafw_current_total_text'));
