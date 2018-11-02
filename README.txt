@@ -5,7 +5,7 @@ Contributors: dcurasi
 Tags: woocommerce, order, woocommerce order, minimum order, woocommerce minimum order, shop, cart, woocommerce cart, product, products, minimum order amount, amount, minimum amount
 Requires at least: 3.2.0
 Tested up to: 4.9.8
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
