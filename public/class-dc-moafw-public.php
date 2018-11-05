@@ -107,6 +107,11 @@ class Dc_Moafw_Public {
 	 */
 	public function dc_moafw_set_minimum_order() {
         global $woocommerce;
+        
+        if ( apply_filters( 'minimum_order_amount_disabled', false ) ) {
+            return;
+        }
+        
         if ( in_array( 'woocommerce-product-price-based-on-countries/woocommerce-product-price-based-on-countries.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
         	$wcpbc_values = new WCPBC_Customer();
         }
